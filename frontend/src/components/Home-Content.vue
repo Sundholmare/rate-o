@@ -2,10 +2,8 @@
   <div class="home-content"></div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'HomeContent',
-}
+<script setup lang="ts">
+
 </script>
 
 <style scoped lang="scss">
