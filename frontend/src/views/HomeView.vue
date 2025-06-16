@@ -11,7 +11,7 @@ import { HomeSidebar, HomeContent } from '@/components'
 
 <style scoped lang="scss">
 .home-view {
-  height: 100%;
+  height: calc(100vh - 2rem);
   display: grid;
   padding: 1rem;
   grid-template-columns: 1fr 3fr;

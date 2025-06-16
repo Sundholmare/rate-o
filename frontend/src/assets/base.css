@@ -1,5 +1,28 @@
-body {
+:root {
+  --primary-color: #17b890;
+  --bg-color: #dee5e5;
+  --white: #f9f6ee;
+  --border-color: #5e807f;
+  --hover-color: #F1DEDE;
+  --font-family: 'Arial', sans-serif;
+  --dark-color: #312f2f;
+  --bs-100: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+html,
+body,
+#app {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  height: 100%;
+  background: var(--white);
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  color: var(--dark-color);
 }

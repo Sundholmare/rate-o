@@ -4,5 +4,7 @@
   "singleQuote": true,
   "printWidth": 100,
   "bracketSpacing": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": true,
+  "singleAttributePerLine": true
 }
