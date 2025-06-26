@@ -4,12 +4,12 @@
     class="ro-primary-button"
   >
     {{ text }}
-    <img class="icon"
+    <img
+      class="icon"
       @if="icon"
       :src="resolvedSrc"
     />
   </button>
-  {{ console.log(resolvedSrc) }}
 </template>
 
 <script setup lang="ts">
