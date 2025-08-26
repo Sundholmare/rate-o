@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
-app.use('/api', ratingsRouter);
+app.use('/rating', ratingsRouter);
 app.use('/user', usersRouter)
 
 app.listen(5000, () => {

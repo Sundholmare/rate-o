@@ -8,10 +8,10 @@
     </div>
     <div class="item-info">
       <h3>Fear to Tread</h3>
-      <p>Author: {{ author }}</p>
-      <p>Rating: {{ rating }}</p>
-      <p>Short description: {{ description }}</p>
-      <p>Review: {{ review }}</p>
+      <p><span class="bold">Author:</span> {{ author }}</p>
+      <p><span class="bold">Rating:</span> {{ rating }}</p>
+      <p><span class="bold">Short description:</span> {{ description }}</p>
+      <p><span class="bold">Review:</span> {{ review }}</p>
     </div>
   </div>
 </template>
@@ -48,8 +48,13 @@
     .item-info {
       display: flex;
       flex-direction: column;
-      flex: 0.5;
-      gap: 1rem;
+      flex: 1;
+      gap: 0.75rem;
+      padding-right: 1rem;
+
+      .bold {
+        font-weight: 600;
+      }
 
       h3 {
         font-size: 1.25rem;

@@ -1,23 +1,32 @@
+import RatingItem from "../models/ratingItem.ts";
 import express from "express";
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  try {
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  // Logic to get a rating by ID
-  console.log(id)
+    const ratings = await RatingItem.find();
+    res.status(200).json(ratings);
 
-  res.status(200).json({ message: `Get rating with ID: ${id}` });
+  } catch (error) {
+    
+    console.error("Error fetching ratings:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
-router.post('/', async (req, res) => {
- 
-})
+router.post("/", async (req, res) => {
+  try {
+    const ratingsItem = req.body;
 
+    await RatingItem.create(ratingsItem);
+    res.status(201).json({ message: "Rating created", ratingsItem });
+  } catch (error) {
+    console.error("Error creating rating:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
-router.delete('/:id', async (req, res) => {
-
-})
-
+router.delete("/:id", async (req, res) => {});
 
 export default router;

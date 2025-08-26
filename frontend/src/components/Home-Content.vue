@@ -34,18 +34,6 @@
         <li>
           <RORateItem v-bind="mockBook" />
         </li>
-        <li>
-          <RORateItem v-bind="mockBook" />
-        </li>
-        <li>
-          <RORateItem v-bind="mockBook" />
-        </li>
-        <li>
-          <RORateItem v-bind="mockBook" />
-        </li>
-        <li>
-          <RORateItem v-bind="mockBook" />
-        </li>
       </ul>
     </div>
   </div>
@@ -57,6 +45,12 @@
 
   interface HomeContentProps {
     title: string
+    content: {
+      category: String,
+      owner: String,
+      title: String,
+      attributes: Record<string, string | number>
+    }
   }
 
   withDefaults(defineProps<HomeContentProps>(), {
