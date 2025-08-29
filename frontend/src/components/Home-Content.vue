@@ -31,8 +31,8 @@
     <div class="rating-list">
       <ul>
         <h2 class="list-header">The Horus Heresy books</h2>
-        <li>
-          <RORateItem v-bind="mockBook" />
+        <li v-for="(item, index) in content" :key="index">
+          <RORateItem v-bind="item" />
         </li>
       </ul>
     </div>
@@ -50,7 +50,7 @@
       owner: String,
       title: String,
       attributes: Record<string, string | number>
-    }
+    }[]
   }
 
   withDefaults(defineProps<HomeContentProps>(), {

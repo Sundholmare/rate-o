@@ -1,16 +1,18 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { useFetch } from '@vueuse/core'
 
 export const useRatingsStore = defineStore('Ratings', () => {
   const ratings = ref([])
 
   const getRatings = async () => {
-    const response = await fetch('http://localhost:5000/rating')
+    const url = 'http://localhost:5000/rating'
+    const { error, data } = await useFetch(url).json()
 
-    if (response.ok) {
-      ratings.value = await response.json()
+    if (data.value) {
+      ratings.value = data.value
     } else {
-      console.error('Failed to fetch ratings:', response.statusText)
+      console.error('Failed to fetch ratings:', error)
     }
   }
 

@@ -7,25 +7,28 @@
       />
     </div>
     <div class="item-info">
-      <h3>Fear to Tread</h3>
-      <p><span class="bold">Author:</span> {{ author }}</p>
-      <p><span class="bold">Rating:</span> {{ rating }}</p>
-      <p><span class="bold">Short description:</span> {{ description }}</p>
-      <p><span class="bold">Review:</span> {{ review }}</p>
+      <h3>{{ title }}</h3>
+      <p><span class="bold">Title: </span>{{ title }}</p>
+      <p><span class="bold">Category: </span> {{ category }}</p>
+      <p v-for="(key, value) in attributes"><span class="bold">{{ capitalize(value) }}: </span>{{ key }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   interface RORateItemProps {
-    title?: string
-    author?: string
-    rating?: number
-    review?: string
-    description?: string
+    category: String
+    owner: String
+    title: String
+    attributes: Record<string, string | number>
   }
 
   defineProps<RORateItemProps>()
+
+  const capitalize = (s: string) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
 </script>
 
 <style scoped lang="scss">
@@ -48,6 +51,7 @@
     .item-info {
       display: flex;
       flex-direction: column;
+      justify-content: space-evenly;
       flex: 1;
       gap: 0.75rem;
       padding-right: 1rem;

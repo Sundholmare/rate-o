@@ -2,8 +2,9 @@
   <div class="home-view">
     <HomeSidebar />
     <HomeContent
+      v-if="ratings.length > 0"
       title="The Horus Heresy"
-      :content="content"
+      :content="ratings"
     />
   </div>
 </template>
@@ -11,24 +12,20 @@
 <script setup lang="ts">
   import { HomeSidebar, HomeContent } from '@/components'
   import { useRatingsStore } from '@/stores/ratings'
-  const { ratings, getRatings } = useRatingsStore()
-  import { onMounted, onUnmounted, computed } from 'vue'
-
-  const content = computed(() => ratings[0] || {
-    category: '',
-    owner: '',
-    title: '',
-    attributes: {}
-  })
+  import { onMounted, onUnmounted, watch } from 'vue'
+  import { storeToRefs } from 'pinia'
+  
+  const { getRatings } = useRatingsStore()
+  const { ratings } = storeToRefs(useRatingsStore())
 
   onMounted(async () => {
     await getRatings()
   })
 
-  onUnmounted(() => {
-    console.log('HomeView unmounted')
-    useRatingsStore().$reset()
+  watch(ratings, (newRatings) => {
+    console.log('Ratings updated:', newRatings)
   })
+
 </script>
 
 <style scoped lang="scss">
